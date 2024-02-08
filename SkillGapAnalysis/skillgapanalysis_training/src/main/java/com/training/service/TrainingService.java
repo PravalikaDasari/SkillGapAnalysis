@@ -8,10 +8,8 @@ import com.training.exception.RecordNotFoundException;
 
 public interface TrainingService {
 	void save(TrainingBean trainingbean) throws NullPointerException;
-
-	void deleteById(long training_id) throws NullPointerException;
-
-	void update(TrainingBean trainingbean, TrainingBean training_id);
+	
+	void updateStatus(long training_id, String status)throws IdNotFoundException;
 
 	List<TrainingBean> getAll() throws RecordNotFoundException;
 	
