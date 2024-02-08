@@ -26,8 +26,17 @@ public class EmployeeEntity
 	@Column(name = "employee_id")
 	private Long empId;
 	
-	@Column(name="employee_name")
-	private String empName;
+	@Column(name="image")
+	private byte[] image;
+	
+	@Column(name="firstname")
+	private String firstName;
+	
+	@Column(name="middlename")
+	private String middleName;
+	
+	@Column(name="lastname")
+	private String lastName;
 	
 	@Column(name="designation_id")
 	private String desgnId;

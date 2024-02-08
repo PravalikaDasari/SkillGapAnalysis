@@ -16,7 +16,10 @@ import lombok.ToString;
 public class EmployeeBean
 {
 	private Long empId;
-	private String empName;
+	private byte[] image;
+	private String firstName;
+	private String middleName;
+	private String lastName;
 	private String desgnId;
 	private String deptId;
 	private Long managerId;
@@ -25,5 +28,4 @@ public class EmployeeBean
 	private String password;
 	private String status;
 
-	
 }
