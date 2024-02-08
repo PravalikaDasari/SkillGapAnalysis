@@ -53,14 +53,9 @@ public class TrainingServiceImpl implements TrainingService {
 			} else {
 				throw new NullPointerException("trainingbean is null");
 			}
-		} catch (Exception exception) {
+		} catch (NullPointerException exception) {
 			throw new NullPointerException("trainingbean is null");
 		}
-	}
-
-	@Override
-	public void update(TrainingBean trainingbean, TrainingBean training_id) {
-
 	}
 
 	@Override
@@ -72,7 +67,7 @@ public class TrainingServiceImpl implements TrainingService {
 				throw new IdNotFoundException("Invalid trainingid");
 			}
 			return bean;
-		} catch (IdNotFoundException e) {
+		} catch (Exception e) {
 			throw new IdNotFoundException("Invalid trainingid");
 		}
 
@@ -94,9 +89,16 @@ public class TrainingServiceImpl implements TrainingService {
 	}
 
 	@Override
-	public void deleteById(long training_id) throws NullPointerException {
-		
+	public void updateStatus(long training_id, String status) throws IdNotFoundException {
+		try {
+			if (status != null) {
+				TrainingBean bean1 = getById(training_id);
+				trainingRepository.updateStatus(training_id, status);
+			}
+
+		} catch (IdNotFoundException e) {
+			throw new IdNotFoundException("Record not found with this id");
+		}
 	}
 
 }
-
