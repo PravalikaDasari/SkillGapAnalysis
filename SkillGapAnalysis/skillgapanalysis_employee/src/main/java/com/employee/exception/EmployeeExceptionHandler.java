@@ -28,6 +28,13 @@ public class EmployeeExceptionHandler
 		return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(value = IdNotFoundException.class)
+	public ResponseEntity<String> exception(IdNotFoundException exception)
+	{
+		log.error("IdNotFoundException-" + exception.getMessage(), exception);
+		return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+	
 	@ExceptionHandler(value = EmployeeNotFoundException.class)
 	public ResponseEntity<String> exception(EmployeeNotFoundException exception) {
 		log.error("EmployeeNotFoundException-" + exception.getMessage(), exception);
