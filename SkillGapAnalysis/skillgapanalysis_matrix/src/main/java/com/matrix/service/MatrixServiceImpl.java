@@ -101,13 +101,13 @@ public class MatrixServiceImpl implements MatrixService
 				HttpMethod.GET, httpEntity1, SkillBean.class);
 		        String skillid = responseEntity1.getBody().getSkillCode();
 
-		MatrixBean matrixDto = matrixDto.builder().
+		MatrixBean matrixDto = MatrixBean.builder().
 				sno(matrix.getSno())
 				.employee_id(empid)
 				.skill_id(skillid)
 				.proficiency(matrix.getProficiency())
 				.certification(matrix.getCertification())
-				.status(matrix.getStatus());
+				.status(matrix.getStatus()).build();
 	
 //		
 //		
