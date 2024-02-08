@@ -28,8 +28,6 @@ public class SkillEntity implements Serializable{
 	@Column(name = "skill_name")
 	private String skillName;
 	
-	@Column(name = "level_expected")
-	private String levelExpected;
 	
 	@Column(name = "status")
 	private String status;

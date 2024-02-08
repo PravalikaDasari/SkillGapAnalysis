@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.employee.bean.EmployeeBean;
 import com.employee.entity.EmployeeEntity;
@@ -18,6 +19,8 @@ public class EmployeeServiceImpl implements EmployeeService
 {
 	@Autowired
 	private EmployeeRepository repository;
+	
+	
 	
 	@Override
 	public EmployeeBean saveEmployee(EmployeeBean bean) 
