@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.matrix.bean.EmployeeBean;
 import com.matrix.bean.MatrixBean;
+import com.matrix.bean.SkillBean;
 import com.matrix.entity.MatrixEntity;
 import com.matrix.repository.MatrixRepository;
 
@@ -81,25 +82,32 @@ public class MatrixServiceImpl implements MatrixService
 		
 		Optional<MatrixEntity> sportsOptional = repository.findById(eId);
 		MatrixEntity matrix = sportsOptional.get();
-
-//		log.info("Medicine - {}", sports);
-
-		String url = "http://localhost:8084/skillgap/" + matrix.getEmployee_id();
+		String empUrl = "http://localhost:8084/skillgap/" + matrix.getEmployee_id();
+		String skillUrl = "http://localhost:8082/skillgap/" + matrix.getSkill_id();
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
-//		log.info("URL - {}", url);
+
 
 		// Input entity
 		HttpEntity<String> httpEntity = new HttpEntity<>(headers);
-		ResponseEntity<EmployeeBean> responseEntity = restTemplate.exchange(url,
+		ResponseEntity<EmployeeBean> responseEntity = restTemplate.exchange(empUrl,
 				HttpMethod.GET, httpEntity, EmployeeBean.class);
-		Long empid = responseEntity.getBody().getEmpId();
+		        Long empid = responseEntity.getBody().getEmpId();
+		
+		HttpEntity<String> httpEntity1 = new HttpEntity<>(headers);
+		ResponseEntity<SkillBean> responseEntity1 = restTemplate.exchange(skillUrl,
+				HttpMethod.GET, httpEntity1, SkillBean.class);
+		        String skillid = responseEntity1.getBody().getSkillCode();
 
-		MatrixBean matrixDto = matrixDto.builder().sno(matrix.getSno())
-				.employee_id(empid).skill_id(skillid)
-				.proficiency(matrix.getProficiency()).certification(matrix.getCertification()).status.(matrix.getStatus())	;
+		MatrixBean matrixDto = matrixDto.builder().
+				sno(matrix.getSno())
+				.employee_id(empid)
+				.skill_id(skillid)
+				.proficiency(matrix.getProficiency())
+				.certification(matrix.getCertification())
+				.status(matrix.getStatus());
 	
 //		
 //		
