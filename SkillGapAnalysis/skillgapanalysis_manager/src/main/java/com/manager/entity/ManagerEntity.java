@@ -1,5 +1,6 @@
 package com.manager.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,11 +25,32 @@ public class ManagerEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="manager_id")
 	private long managerId;
-	private String managerName;
+	
+	@Column(name="first_name")
+	private String firstName;
+	
+	@Column(name="middile_name")
+	private String middileName;
+	
+	@Column(name="last_name")
+	private String lastName;
+	
+	@Column(name="manager_email")
 	private String managerEmail;
+	
+	@Column(name="department_id")
 	private String departmentId;
+	
+	@Column(name="manager_password")
 	private String managerPassword;
+	
+	@Column(name="status")
 	private String status;
+	
+	@Column(name="image")
+	private byte[] image;
+
 
 }
