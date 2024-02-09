@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import lombok.extern.slf4j.Slf4j;
 
+
 @Slf4j
 @ControllerAdvice
 public class SkillExceptionHandler {
@@ -28,4 +29,11 @@ public class SkillExceptionHandler {
 		return new ResponseEntity<>(exception.getMessage(),
 				HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	@ExceptionHandler(value = ExpectedSkillIdNotFound.class)
+	public ResponseEntity<String> exception(ExpectedSkillIdNotFound exception) {
+		log.error("ExpectedSkillIdNotFound-" + exception.getMessage(), exception);
+		return new ResponseEntity<>(exception.getMessage(),
+				HttpStatus.NOT_FOUND);
+	}
+	
 }
