@@ -16,12 +16,14 @@ import lombok.extern.slf4j.Slf4j;
 public class ManagerBean {
 
 	private long managerId;
-	private String managerName;
+	private String firstName;
+	private String middileName;
+	private String lastName;
 	private String managerEmail;
 	private String departmentId;
 	private String managerPassword;
 	private String status;
-
+    private byte[] image;
     
 	
 }
